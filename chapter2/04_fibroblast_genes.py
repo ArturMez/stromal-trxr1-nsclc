@@ -12,7 +12,8 @@ WHAT: s1, the transcriptome-wide TXNRD1 scan in fibroblasts: for every gene of t
           every tested member of the complement cascade list. Then the per-batch effect of each drawn
           gene over the observed pairs, and the rows, dots and counts of the panel.
 ITEMS: the gene tables behind Supplementary Figure 4 (the figure itself is drawn by 05_plots.py), and the
-      numbers of its legend and footnote. The leave-out run that backs the paper is
+      numbers of its legend and footnote; the values of the sheet Aldehyde enzyme genes of Supplementary Data 1
+      (fibroblast_genes_scan.csv, read by 10_supplementary_data1.py). The leave-out run that backs the paper is
       --leave-out-study Jimenez_Bruno_2026 (the ablation study GSE325414; Methods sentence on it).
 FROM: work_root/intermediate/chapter2/work_fib/ (02_working_sets.py); work_root/output/chapter2/
       gene_programs_definitions.csv (01) and program_tests_fib.csv (03, the not-testable members).

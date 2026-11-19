@@ -123,7 +123,7 @@ names of its sections (s1, s2, ...); the sections and their outputs are listed i
 | `python3 chapter2/07_smoking_atlas.py` | 02, `atlas_object` | Supplementary Figure 2b | 15 s |
 | `python3 chapter2/08_supptable2.py` | 01, 03, 06 | the tables of Supplementary Data 1 | under a second |
 | `python3 chapter2/09_txnrd1_profile.py` | `atlas_object`, 02 | Figure 2a | 45 s |
-| `python3 chapter2/10_supplementary_data1.py` | 08 | Supplementary Data 1 (Excel) | under a second |
+| `python3 chapter2/10_supplementary_data1.py` | 04, 08 | Supplementary Data 1 (Excel), with the sheet Aldehyde enzyme genes from `fibroblast_genes_scan.csv` of 04 | under a second |
 
 Atlas stages take `--list`, `--dry-run`, `--only step ...` and `--from step`, run one process per step and write
 one log per step under `work_root/atlas/logs/`. A clean rebuild needs about 80 GB of free disk; the steps stream the
@@ -242,7 +242,7 @@ the reference. Panels are written as PNG and PDF.
 | Supplementary Table 3b | `chapter4/supptable4c.csv`, `supptable4c_density.csv` | `chapter4.py` |
 | Supplementary Table 3c | `chapter4/supptable4e.csv` | `chapter4.py` |
 | Supplementary Table 3d | `chapter4/supptable3d.csv` (the printed cells), `ch4_niche_survival.csv` (every model) | `chapter4.py` |
-| Supplementary Data 1 | `supplementary/Supplementary_Data_1.xlsx`, from `chapter2/supptable2_programs.csv` (sheet Thioredoxin programs), `supptable2_cancer.csv`, `supptable2_cycle_genes.csv` (Thioredoxin cycle genes), `supptable2_txn_txnip.csv` (TXN and TXNIP), `supptable2b_programs.csv` (Gene programs), `tnk_subtypes.csv` (T and NK subtypes) and `supptable2b_genes.csv` (Gene lists) | `chapter2/08_supptable2.py`, `10_supplementary_data1.py`, `12_tnk_subtypes.py` |
+| Supplementary Data 1 | `supplementary/Supplementary_Data_1.xlsx`, from `chapter2/supptable2_programs.csv` (sheet Thioredoxin programs), `supptable2_cancer.csv`, `supptable2_cycle_genes.csv` (Thioredoxin cycle genes), `supptable2_txn_txnip.csv` (TXN and TXNIP), `fibroblast_genes_scan.csv` (Aldehyde enzyme genes), `supptable2b_programs.csv` (Gene programs), `tnk_subtypes.csv` (T and NK subtypes) and `supptable2b_genes.csv` (Gene lists) | `chapter2/04_fibroblast_genes.py`, `08_supptable2.py`, `10_supplementary_data1.py`, `12_tnk_subtypes.py` |
 
 Numbers printed only in the text come from tables in the same folders; `manifest/manifest.csv` names the table and
 the row of each (section 8).

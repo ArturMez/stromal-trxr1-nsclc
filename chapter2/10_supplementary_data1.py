@@ -2,7 +2,7 @@
 """
 Chapter 2, step 10: Supplementary Data 1, the Excel workbook of the gene programs.
 
-WHAT: one workbook, written from the tables of 08, 01 and 12 without any new computation. Sheets:
+WHAT: one workbook, written from the tables of 08, 01, 04 and 12 without any new computation. Sheets:
         Read me               what each sheet holds and what its columns mean
         Thioredoxin programs  TXNRD1 expression against the thioredoxin system, the NRF2 program and
                               candidate upstream signals: the 26 programs of supptable2_programs.csv in
@@ -13,6 +13,10 @@ WHAT: one workbook, written from the tables of 08, 01 and 12 without any new com
                               the additional tests of Supplementary Figure 2a and 2d
                               (supptable2_cycle_genes.csv, supptable2_txn_txnip.csv). These two sheets and the
                               cancer columns are written when 08 s3 has produced their tables.
+        Aldehyde enzyme genes the five genes of the aldehyde-metabolizing enzymes (a program of the sheet
+                              Thioredoxin programs) tested one by one in fibroblasts: detection, pairs, effect,
+                              permutation mean and SD and z, as printed, from fibroblast_genes_scan.csv of
+                              04_fibroblast_genes.py, written when that table exists
         Gene programs         the 30 programs of the panels of Figure 3 and Supplementary Figure 3, in their
                               order: the label with "(contrast)" for the contrast program, the source as
                               the database identifier or the location in the publication, the reference
@@ -31,14 +35,15 @@ WHAT: one workbook, written from the tables of 08, 01 and 12 without any new com
 ITEMS: Supplementary Data 1 (the file Supplementary_Data_1.xlsx).
 FROM: work_root/output/chapter2/supptable2_programs.csv, supptable2b_programs.csv, supptable2b_genes.csv
       (08_supptable2.py) and the where_in_source, edits and symbols_renamed columns of
-      supptable_gene_programs.csv (01_programs.py s2), and tnk_subtypes.csv (12_tnk_subtypes.py).
+      supptable_gene_programs.csv (01_programs.py s2), fibroblast_genes_scan.csv (04_fibroblast_genes.py s1) and
+      tnk_subtypes.csv (12_tnk_subtypes.py).
 TO:   work_root/output/supplementary/Supplementary_Data_1.xlsx and its sibling Supplementary_Data_1.md.
       The cell values are reproducible; the file bytes are not, because openpyxl stamps the save time
       into the workbook properties.
 WHY:  the program tables are reference data, read in a spreadsheet rather than on paper, so they are
       supplied as one workbook.
 RUN:  python3 chapter2/10_supplementary_data1.py
-      Run after 08_supptable2.py and 12_tnk_subtypes.py. No random numbers.
+      Run after 04_fibroblast_genes.py, 08_supptable2.py and 12_tnk_subtypes.py. No random numbers.
 """
 import re
 import sys
@@ -240,6 +245,42 @@ def sheet_tnk_subtypes():
     return header, rows
 
 
+# The sheet Aldehyde enzyme genes: the genes of this program of the sheet Thioredoxin programs, in that sheet's order.
+ALDEHYDE_SET = "C1_aldehyde"
+
+
+def scan():
+    """True when 04_fibroblast_genes.py has written fibroblast_genes_scan.csv."""
+    return L.out("fibroblast_genes_scan.csv").exists()
+
+
+def one(v):
+    """A value as printed with one decimal; a value that rounds to zero is 0.0, without a minus sign."""
+    v = float(f"{v:.1f}")
+    return 0.0 if v == 0 else v
+
+
+def sheet_aldehyde_genes():
+    """The genes of the aldehyde-metabolizing enzymes tested one by one in fibroblasts (fibroblast_genes_scan.csv), in
+    the order of the sheet Thioredoxin programs: detection in percent, pairs, effect, permutation mean and SD, and z."""
+    T = read("supptable2_programs.csv")
+    row = T[T.set_id == ALDEHYDE_SET]
+    if len(row) != 1:
+        raise ValueError(f"supptable2_programs.csv: no single row for {ALDEHYDE_SET}")
+    genes = row.iloc[0].genes.split(", ")
+    G = pd.read_csv(L.out("fibroblast_genes_scan.csv"), float_precision="round_trip")
+    if G.gene.isna().any() or G.gene.duplicated().any():
+        raise ValueError("fibroblast_genes_scan.csv: a gene is missing or listed twice")
+    G = G.set_index("gene")
+    missing = [g for g in genes if g not in G.index]
+    if missing:
+        raise ValueError(f"fibroblast_genes_scan.csv has no row for {', '.join(missing)}")
+    header = ["Gene", "Detected, %", "Pairs", "Effect", "Permutation mean", "Permutation SD", "z"]
+    rows = [[g, float(f"{100 * G.loc[g, 'detection']:.1f}"), int(G.loc[g, "n_pairs"]), three(G.loc[g, "eff"]),
+             three(G.loc[g, "perm_mean"]), three(G.loc[g, "perm_sd"]), one(G.loc[g, "z"])] for g in genes]
+    return header, rows
+
+
 def sheet_programs():
     """The sheet Gene programs, one row per program, its row group in the first column."""
     T = read("supptable2b_programs.csv")
@@ -288,7 +329,7 @@ def sheet_genes(order, label):
 
 
 # The lines that describe the cancer cells and the additional tests are written only when their tables exist
-# ("+" marks them); "t" marks the lines of the sheet T and NK subtypes.
+# ("+" marks them); "t" marks the lines of the sheet T and NK subtypes and "a" those of the sheet Aldehyde enzyme genes.
 README = [
     ("Supplementary Data 1", None),
     ("Gene programs of the single-cell analysis of TXNRD1-positive cells (Figures 2 and 3, Supplementary "
@@ -324,6 +365,18 @@ README = [
      "differences obtained when the same cells were split in the same way by genes expressed as strongly as TXN. "
      "Comparison genes, Window: the number of these genes and the window around the mean count fraction of TXN "
      "that held them.", "+"),
+    ("", "a"),
+    ("Sheet Aldehyde enzyme genes", "abold"),
+    ("The five genes of the aldehyde-metabolizing enzymes (sheet Thioredoxin programs, Figure 2c) tested one by one in "
+     "fibroblasts, one row per gene. The values come from the test of single genes in fibroblasts (Supplementary "
+     "Methods), with 100 permutations. A program score is the mean of the scores of its genes, so the effects of the "
+     "genes show which of them carry the difference of the set. None of the five genes passed the Benjamini-Hochberg "
+     "correction across all genes of that test (q above 0.20).", "a"),
+    ("Detected, %: the fibroblasts in which the gene was detected, as a percentage of those in which it was measured. "
+     "Pairs: the matched pairs with a value for the gene in both cells. Effect: the mean paired difference in the "
+     "within-batch z score of the gene's count fraction, TXNRD1-positive cells minus their partners. Permutation mean "
+     "and Permutation SD: the mean and the SD of this difference over 100 permutations of TXNRD1 status among the "
+     "cells of each patient. z: the effect minus the permutation mean, divided by the permutation SD.", "a"),
     ("", None),
     ("Sheet Gene programs", "bold"),
     ("The programs of the panel of each cell type in Figure 3 and Supplementary Figure 3: published cell-state "
@@ -391,6 +444,7 @@ def main():
     ws.title = "Read me"
     more = extra()
     has_tnk = tnk()
+    has_scan = scan()
     for text, style in README:
         if style and style.startswith("+"):
             if not more:
@@ -398,6 +452,10 @@ def main():
             style = style[1:]
         if style and style.startswith("t"):            # the lines of the sheet T and NK subtypes
             if not has_tnk:
+                continue
+            style = style[1:]
+        if style and style.startswith("a"):            # the lines of the sheet Aldehyde enzyme genes
+            if not has_scan:
                 continue
             style = style[1:]
         ws.append([text])
@@ -419,6 +477,17 @@ def main():
             row[0].number_format = "0.000"            # the difference in score to three decimals, as printed
         n_extra = (f"| Thioredoxin cycle genes | {len(rg)} genes | supptable2_cycle_genes.csv |\n"
                    f"| TXN and TXNIP | {len(rx)} cell types | supptable2_txn_txnip.csv |\n")
+    n_aldehyde = ""
+    if has_scan:
+        h5, r5 = sheet_aldehyde_genes()
+        write_sheet(wb.create_sheet("Aldehyde enzyme genes"), h5, r5, None, [12, 11, 8, 9, 13, 13, 8])
+        for row in wb["Aldehyde enzyme genes"].iter_rows(min_row=2, min_col=4, max_col=6):
+            for cell in row:
+                cell.number_format = "0.000"          # effect, permutation mean and SD to three decimals, as printed
+        n_aldehyde = f"| Aldehyde enzyme genes | {len(r5)} genes | fibroblast_genes_scan.csv |"
+    else:
+        print("fibroblast_genes_scan.csv not found: the sheet Aldehyde enzyme genes is not written "
+              "(run 04_fibroblast_genes.py first)")
     h2, r2, order, by_id = sheet_programs()
     write_sheet(wb.create_sheet("Gene programs"), h2, r2, None,
                 [24, 40, 40, 44, 8] + [13] * len(L.CELL_SETS) + [32])
@@ -448,6 +517,7 @@ def main():
              f"| Thioredoxin programs | {len(r1)} programs | supptable2_programs.csv (printed z and percentile, "
              "bold marks)" + (", with the cancer cells of supptable2_cancer.csv" if more else "") + " |",
              *([n_extra.rstrip("\n")] if more else []),
+             *([n_aldehyde] if n_aldehyde else []),
              f"| Gene programs | {len(r2)} programs | supptable2b_programs.csv and the where_in_source column of "
              "supptable_gene_programs.csv, by the rules of the printed table (label, source, reference, drawn in) |",
              *([n_tnk] if n_tnk else []),

@@ -34,7 +34,9 @@ manifest.csv columns
                                           from a largest p of 0.0338)
               "integer"                   a count
               "percent 0 dp"              a value already stored in percent, rounded to whole
-              "fraction as percent 0 dp"  a value stored as a fraction, printed in whole percent
+              "fraction as percent <n> dp"
+                                          a value stored as a fraction, printed in percent with fixed
+                                          decimals ("fraction as percent 0 dp": whole percent)
               "p: 3 dp, < 0.001 below"    the house rule for a p value
   expected_diff
             empty by default. A short reason where the package knowingly differs from the printed
@@ -90,8 +92,9 @@ def apply_rule(value, rule):
         return str(int(round(v)))
     if rule == "percent 0 dp":
         return f"{v:.0f}"
-    if rule == "fraction as percent 0 dp":
-        return f"{100 * v:.0f}"
+    m = re.fullmatch(r"fraction as percent (\d+) dp", rule)
+    if m:
+        return f"{100 * v:.{int(m.group(1))}f}"
     m = re.fullmatch(r"(signed |diff |abs |floor |ceiling )?(\d+) dp", rule)
     if m:
         n = int(m.group(2))

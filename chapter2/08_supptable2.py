@@ -20,7 +20,8 @@ WHAT: s1, the sheet Thioredoxin programs: one row per program (26, in the printe
       10_supplementary_data1.py writes the Excel workbook from these tables (the file names keep the numbers
       of the earlier table layout).
 ITEMS: Supplementary Data 1, sheets Thioredoxin programs, Gene programs, Gene lists, Thioredoxin cycle genes
-      and TXN and TXNIP (the sheets Read me and T and NK subtypes are made by 10 and 12).
+      and TXN and TXNIP (the sheet Read me is made by 10; the sheets Aldehyde enzyme genes and T and NK subtypes
+      come from the tables of 04 and 12).
 FROM: work_root/output/chapter2/trx_results.csv (06); gene_programs_definitions.csv and
       supptable_gene_programs.csv (01), program_results.csv and fig2_rows.csv (03).
 TO:   work_root/output/chapter2/supptable2_programs.csv (s1), supptable2b_programs.csv and
