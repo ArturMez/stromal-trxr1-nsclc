@@ -1,0 +1,10 @@
+config.json
+examples.json
+work/
+__pycache__/
+*.pyc
+.Rhistory
+.DS_Store
+._*
+.pytest_cache/
+_bak_*

@@ -1,0 +1,17 @@
+{
+  "raw_root": "/path/to/raw_data",
+  "work_root": "/path/to/work",
+  "examples": "/path/to/examples.json",
+  "pellinen": null,
+  "atlas_object": "/path/to/work/atlas/output/RNA/meta_dataset/fullbuild/fullgene_object.h5ad",
+  "epi_object": "/path/to/work/atlas/output/RNA/meta_dataset/epibuild/epi_fullgene_object.h5ad",
+  "scrna_raw": null,
+  "atlas_root": null,
+  "rscript": null,
+  "gse81089": null,
+  "input_files": {
+    "bomi2_clinical_database": "<file name of the Uppsala II clinical database sheet in raw_root/Bomi2>",
+    "bomi1_cell_export": "<file name of the Uppsala I merged cell export in raw_root/Raw_original_BOMI1>",
+    "bomi1_tissue_export": "<file name of the Uppsala I merged tissue export in raw_root/Raw_original_BOMI1>"
+  }
+}

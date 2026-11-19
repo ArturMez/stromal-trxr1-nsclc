@@ -1,0 +1,75 @@
+{
+  "about": "What Figure 3 and Supplementary Figure 3 draw for each cell set, by set id stem (the part before the first dot, so a promoted sensitivity list keeps its place); the nested row of Figure 3; printed labels that differ from the catalog label; the group order of Supplementary Figure 3. The thioredoxin programs are not drawn in these figures; they are analyzed in the thioredoxin section (Figure 2c and Supplementary Figure 2), against genes detected as often as TXNRD1.",
+  "panel": {
+    "fib": [
+      "complement_cascade",
+      "adventitial_fibroblast",
+      "alveolar_fibroblast",
+      "icaf",
+      "mycaf",
+      "core_matrisome",
+      "collagen_modification",
+      "dissociation_stress"
+    ],
+    "mac": [
+      "complement_cascade",
+      "classical_complement",
+      "lam",
+      "resident_like_macrophage",
+      "lysosome",
+      "apoptotic_cell_clearance",
+      "inflammasome",
+      "iron_homeostasis",
+      "hypoxia",
+      "angiogenesis",
+      "protein_secretion",
+      "mhc_class_ii",
+      "mhc_class_i",
+      "ifn_gamma",
+      "inflammatory_response",
+      "cell_cycle",
+      "dissociation_stress"
+    ],
+    "tnk": [
+      "mhc_class_ii",
+      "ifn_gamma",
+      "cell_cycle",
+      "myc_targets",
+      "mtorc1",
+      "exhaustion",
+      "cytotoxic",
+      "treg",
+      "naive_memory",
+      "activation",
+      "dissociation_stress"
+    ]
+  },
+  "figure_roles": [
+    "primary",
+    "contrast"
+  ],
+  "suppfig3_roles": [
+    "primary",
+    "contrast",
+    "technical control"
+  ],
+  "nested": {
+    "icaf.cords": {
+      "parent": "adventitial_fibroblast",
+      "note": "all 6 genes are in the list above"
+    }
+  },
+  "printed_labels": {
+    "mycaf.cords": "Matrix CAF signature"
+  },
+  "groups": [
+    "Fibroblast state",
+    "Macrophage state",
+    "Antigen presentation",
+    "Interferon and inflammation",
+    "Growth and biosynthesis",
+    "T and NK cell state",
+    "Technical control"
+  ],
+  "complement_set": "complement_cascade"
+}

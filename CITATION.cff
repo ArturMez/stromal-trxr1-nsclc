@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "Stromal thioredoxin reductase 1, T-cell-rich stroma and survival in lung squamous cell carcinoma"
+version: 1.0.0
+license: MIT
+repository-code: "https://github.com/ArturMez/stromal-trxr1-nsclc"
+authors:
+  - given-names: "Artur"
+    family-names: "Mezheyeuski"

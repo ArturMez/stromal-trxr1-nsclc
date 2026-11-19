@@ -1,0 +1,125 @@
+section	key	n_cells	n_patients	n_qc_pass
+block_id	Adams_Kaminski_2020_10x 3' v2	116098	46	0
+block_id	Chen_Zhang_2020_10x 3' v2	18644	5	18644
+block_id	Chen_Zhang_2020_10x 3' v3	41765	6	41765
+block_id	DeZuani_Cvejic_2024_10x 3' v2	2717	1	2717
+block_id	DeZuani_Cvejic_2024_10x 3' v3	754131	25	754131
+block_id	Gao_Zhang_2024_10x 5' v1	7244	13	7244
+block_id	Goveia_Carmeliet_2020_10x 3' v2	12828	7	12828
+block_id	Guo_Zhang_2018_Smart-seq2	7326	13	7326
+block_id	He_Fan_2021_10x 3' v2	65163	5	65163
+block_id	Jimenez_Bruno_2026_BD Rhapsody	93617	25	93617
+block_id	Kim_Lee_2020_10x 3' v2	122004	44	122004
+block_id	Lambrechts_Thienpont_2018_10x 3' v1_EMTAB6149	3085	2	3085
+block_id	Lambrechts_Thienpont_2018_10x 3' v2_EMTAB6149	32877	3	32877
+block_id	Lambrechts_Thienpont_2018_10x 3' v2_EMTAB6653	23163	3	23163
+block_id	Leader_Merad_2021_10x 3' v1	4398	1	4398
+block_id	Leader_Merad_2021_10x 3' v2	201697	32	201697
+block_id	Leader_Merad_2021_10x 3' v3	7655	2	7655
+block_id	Leader_Merad_2021_10x 5' v1	19080	3	19080
+block_id	Maynard_Bivona_2020_Smart-seq2	10565	27	10565
+block_id	Mayr_Schiller_2020_Drop-seq	3378	10	3378
+block_id	UKIM-V_BD Rhapsody	105601	17	105601
+block_id	Wu_Zhou_2021_GEXSCOPE	18130	42	18130
+block_id	Zhang_Chen_2022_10x 3' v2	150331	32	150331
+block_id	Zilionis_Klein_2019_inDrop	16762	7	16762
+block_qc_pass	False	116098	46	0
+block_qc_pass	True	1722161	322	1722161
+chapter2_selection	LUAD|T_NK	215534	155	215534
+chapter2_selection	LUAD|all	387179	156	387179
+chapter2_selection	LUAD|fibroblast	5168	107	5168
+chapter2_selection	LUAD|myeloid	166477	149	166477
+chapter2_selection	LUSC|T_NK	155689	70	155689
+chapter2_selection	LUSC|all	289299	71	289299
+chapter2_selection	LUSC|fibroblast	6808	55	6808
+chapter2_selection	LUSC|myeloid	126802	68	126802
+chapter2_selection_level2	LUAD|T_NK|	4437	1	4437
+chapter2_selection_level2	LUAD|T_NK|CD4_T	79594	153	79594
+chapter2_selection_level2	LUAD|T_NK|CD8_T	76907	150	76907
+chapter2_selection_level2	LUAD|T_NK|NK	28054	141	28054
+chapter2_selection_level2	LUAD|T_NK|T_other	3576	26	3576
+chapter2_selection_level2	LUAD|T_NK|Treg	22966	144	22966
+chapter2_selection_level2	LUAD|fibroblast|	34	1	34
+chapter2_selection_level2	LUAD|fibroblast|fibroblast	5134	106	5134
+chapter2_selection_level2	LUAD|myeloid|	603	1	603
+chapter2_selection_level2	LUAD|myeloid|DC	25386	143	25386
+chapter2_selection_level2	LUAD|myeloid|macrophage	97125	148	97125
+chapter2_selection_level2	LUAD|myeloid|monocyte	17048	105	17048
+chapter2_selection_level2	LUAD|myeloid|myeloid_other	2707	89	2707
+chapter2_selection_level2	LUAD|myeloid|neutrophil	18761	73	18761
+chapter2_selection_level2	LUAD|myeloid|pDC	4847	108	4847
+chapter2_selection_level2	LUSC|T_NK|	1102	1	1102
+chapter2_selection_level2	LUSC|T_NK|CD4_T	34661	68	34661
+chapter2_selection_level2	LUSC|T_NK|CD8_T	64551	63	64551
+chapter2_selection_level2	LUSC|T_NK|NK	28159	60	28159
+chapter2_selection_level2	LUSC|T_NK|T_other	9299	15	9299
+chapter2_selection_level2	LUSC|T_NK|Treg	17917	57	17917
+chapter2_selection_level2	LUSC|fibroblast|	20	1	20
+chapter2_selection_level2	LUSC|fibroblast|fibroblast	6788	54	6788
+chapter2_selection_level2	LUSC|myeloid|	358	1	358
+chapter2_selection_level2	LUSC|myeloid|DC	18207	65	18207
+chapter2_selection_level2	LUSC|myeloid|macrophage	64239	67	64239
+chapter2_selection_level2	LUSC|myeloid|monocyte	18600	44	18600
+chapter2_selection_level2	LUSC|myeloid|myeloid_other	578	30	578
+chapter2_selection_level2	LUSC|myeloid|neutrophil	21736	42	21736
+chapter2_selection_level2	LUSC|myeloid|pDC	3084	40	3084
+histology	COPD	48211	18	0
+histology	LUAD	859420	206	859420
+histology	LUSC	584100	72	584100
+histology	NSCLC_unspecified	243111	30	243111
+histology	large_cell	11732	1	11732
+histology	normal	79169	40	11282
+histology	pleomorphic	12516	1	12516
+left_out_copies	all	50651	8	50651
+level1_compartment	T_NK	915992	350	892631
+level1_compartment	fibroblast	28381	286	27062
+level1_compartment	myeloid	893886	345	802468
+level2_celltype	T_NK|	11416	3	11416
+level2_celltype	T_NK|CD4_T	279112	340	272936
+level2_celltype	T_NK|CD8_T	308399	330	299318
+level2_celltype	T_NK|NK	217031	317	209968
+level2_celltype	T_NK|T_other	37571	51	37571
+level2_celltype	T_NK|Treg	62463	301	61422
+level2_celltype	fibroblast|	338	3	338
+level2_celltype	fibroblast|fibroblast	28043	283	26724
+level2_celltype	myeloid|	11409	3	11409
+level2_celltype	myeloid|DC	113754	330	109790
+level2_celltype	myeloid|macrophage	542380	340	485334
+level2_celltype	myeloid|monocyte	141522	268	112079
+level2_celltype	myeloid|myeloid_other	6657	211	5970
+level2_celltype	myeloid|neutrophil	61561	156	61539
+level2_celltype	myeloid|pDC	16603	230	16347
+source_key	EMTAB13526	756848	26	756848
+source_key	EMTAB6149	35962	5	35962
+source_key	EMTAB6653	23163	3	23163
+source_key	GSE246215	7244	13	7244
+source_key	GSE325414	93617	25	93617
+source_key	LuCA_census	771094	264	654996
+source_key	STTT	150331	32	150331
+study	Adams_Kaminski_2020	116098	46	0
+study	Chen_Zhang_2020	60409	11	60409
+study	DeZuani_Cvejic_2024	756848	26	756848
+study	Gao_Zhang_2024	7244	13	7244
+study	Goveia_Carmeliet_2020	12828	7	12828
+study	Guo_Zhang_2018	7326	13	7326
+study	He_Fan_2021	65163	5	65163
+study	Jimenez_Bruno_2026	93617	25	93617
+study	Kim_Lee_2020	122004	44	122004
+study	Lambrechts_Thienpont_2018	59125	8	59125
+study	Leader_Merad_2021	232830	35	232830
+study	Maynard_Bivona_2020	10565	27	10565
+study	Mayr_Schiller_2020	3378	10	3378
+study	UKIM-V	105601	17	105601
+study	Wu_Zhou_2021	18130	42	18130
+study	Zhang_Chen_2022	150331	32	150331
+study	Zilionis_Klein_2019	16762	7	16762
+tissue_class	LN_met	13003	17	13003
+tissue_class	adjacent_normal	743341	163	743341
+tissue_class	adrenal_met	316	2	316
+tissue_class	brain_met	8958	11	8958
+tissue_class	effusion	17047	9	17047
+tissue_class	liver_met	1842	4	1842
+tissue_class	normal_LN	23784	10	23784
+tissue_class	normal_lung	124002	48	7904
+tissue_class	primary_tumor	905966	259	905966
+total	all	1838259	368	1722161

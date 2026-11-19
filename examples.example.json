@@ -1,0 +1,8 @@
+{
+  "_comment": "Example cores and patients shown in the figures. Ships with the data, not with the code.",
+  "fig3c": {"cohort": "BOMI2", "Case": "<patient>", "core": "<core id>", "positive_raw": ["<x px>", "<y px>"], "negative_raw": ["<x px>", "<y px>"]},
+  "fig4a_window": {"cohort": "BOMI2", "Case": "<patient>", "core": "<core id>", "width_um": 360},
+  "fig4d": [{"role": "fragmented", "cohort": "BOMI2", "Case": "<patient>", "core": "<core id>"}, {"role": "confluent", "cohort": "BOMI2", "Case": "<patient>", "core": "<core id>"}],
+  "fig4f_squares": [{"cohort": "BOMI2", "Case": "<patient>"}, {"cohort": "BOMI2", "Case": "<patient>"}],
+  "suppfig6": [{"cell": "LL", "cohort": "BOMI2", "Case": "<patient>", "core": "<core id>"}]
+}

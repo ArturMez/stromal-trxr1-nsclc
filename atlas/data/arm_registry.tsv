@@ -1,0 +1,12 @@
+arm_id	source_key	block_id	status	reason	panel_genes	full_genes	cells_full	counts	block_qc	notes
+LuCA	LuCA_census	16 blocks	included	12 LuCA studies reach the object	1906	17811	771094	raw except 17891 Smart-seq2 cells flagged	1 of 16 blocks FAILS (Adams_Kaminski_2020 10x 3' v2, 18 dropouts)	raw counts in layers['count']; X is normalised and must not be used
+E-MTAB-13526	EMTAB13526	DeZuani_Cvejic_2024 x2	included	De Zuani, 81 CellRanger MTX libraries	1906	33514	756848	raw	pass	widest gene axis of the original arms
+E-MTAB-6653	EMTAB6653	Lambrechts_..._EMTAB6653	included	Lambrechts	1906	23968	23163	Alevin EM ESTIMATES, all cells flagged	pass	counts_are_estimates True for every cell
+E-MTAB-6149	EMTAB6149	Lambrechts_..._EMTAB6149 x2	included	Lambrechts; SOLE source of patients P1 to P5	1906	22180	35962	raw, RECOVERED by inverting ln(1+c*1e4/T)	pass	integers recovered for 52698 of 52698 cells, worst deviation 3.274e-11
+STTT	STTT	Zhang_Chen_2022 10x 3' v2	included	Zhang 2022; largest new squamous source	1722	17277	200982	raw	PASS, 0 dropouts	2226 squamous tumour fibroblasts across 14 LUSC patients
+GSE325414	GSE325414	Jimenez_Bruno_2026 BD Rhapsody	included	Jimenez (Bruno lab)	1903	32662	93617	raw	PASS, 0 dropouts	only arm mergeable into the 1906 panel axis at a cost of 3 genes
+GSE246215	GSE246215	Gao_Zhang_2024 10x 5' v1	included	Gao 2024	1888	33643	7244	raw	PASS, 1 dropout	FIBROBLASTS ONLY; the deposit has no myeloid or T/NK files
+GSE136246	-	-	EXCLUDED	deposits human_normalized_gene_counts.txt.gz, NOT raw counts; shallow inDrop at a median of 73 panel counts; 7 of its 12 donors duplicate Zilionis_Klein_2019 by exact barcode containment	1873	41861	0	normalised	not assessed	do not re-add without re-checking the Zilionis duplication
+GSE207422	-	-	EXCLUDED	146 panel genes absent because the deposit is filtered to detected genes; immune-enriched at 77.4 percent PTPRC	1760	-	0	-	not assessed	rejected at wave 1
+GSE123904	-	-	EXCLUDED	each sample filtered to its own genes so the panel intersection across samples is 1274 of 1906; 13 of 30 files are mouse	1274	-	0	-	not assessed	rejected at wave 1
+Bischoff_2021	-	-	EXCLUDED	Code Ocean, proof-of-work gated; its patient table shows 12 patients with NO squamous	-	-	0	-	not assessed	rejected at wave 1

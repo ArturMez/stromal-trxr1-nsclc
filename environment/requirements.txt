@@ -1,0 +1,18 @@
+# Python packages of the analysis scripts (mif/, the five root scripts, chapter2/, manifest/check.py), pinned to the
+# versions the published outputs were made with: Python 3.13.13 on an Apple M2.
+#   pip install -r environment/requirements.txt
+numpy==2.4.6
+pandas==2.3.3
+scipy==1.18.0
+matplotlib==3.11.0
+h5py==3.16.0
+statsmodels==0.14.6
+openpyxl==3.1.5
+xlrd==2.0.2
+requests==2.33.1
+
+# Only for atlas/ (the rebuild of the single-cell atlas objects; the chapter scripts do not need these). The atlas
+# was built with Python 3.12, anndata 0.12, scanpy 1.12 and h5py 3.16 (the patch versions were not recorded):
+#   pip install "anndata==0.12.*" "scanpy==1.12.*" pyarrow
+# anndata and scanpy read and write the h5ad objects, pyarrow the parquet tables of the build plan and of the
+# E-MTAB-13526 arm, requests the HTTP range reads of atlas/steps/rangefile.py.

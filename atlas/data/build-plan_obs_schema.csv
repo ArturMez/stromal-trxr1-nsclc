@@ -1,0 +1,32 @@
+column,dtype,allowed_values_or_form,required,purpose,trap_it_defends_against
+cell_id,str,<source_key>|<library_id>|<barcode>,yes,globally unique index,barcodes collide across libraries and the E-MTAB-13526 author object uses concatenation suffixes that are not library ids
+source_key,category,"LuCA_census / EMTAB6149 / EMTAB6653 / GSE123904 / GSE131907 / GSE223499 / EMTAB13526 / GSE194070 / GSE207422 / EMTAB13710 / FLEX_FFPE",yes,provenance,-
+study,category,"Wu_Zhou_2021 / Leader_Merad_2021 / Lambrechts_Thienpont_2018 / ...",yes,meta-analysis grouping,a Census dataset_id is not a study; two Leader_Merad chemistries are two blocks of one study
+donor_id,str,<study>_<native donor label>,yes,the unit of every test,"GSE131907 ships it empty; GSE223499 ships it sample-level; Lambrechts appears twice if the Census is not filtered"
+library_id,str,native,yes,batch,GSE223499 has 42 libraries for 40 donors; E-MTAB-6149 has 24 libraries for 19 samples
+histology,category,LUAD / LUSC / large_cell / pleomorphic / NSCLC_unspecified / normal / COPD,yes,the contrast,"free-text tumour type fields have 14 dirty levels with trailing spaces and an embedded newline; GSE223499 disease says brain_metastasis which is not a histology"
+histology_source,category,SDRF / GEO / paper_supplement / census_disease / not_determinable,yes,auditability,"E-MTAB-13526 P4 is LUSC in the SDRF and Squamous dysplasia in the author h5ad; Lambrechts histology exists only in Suppl Table 1"
+histology_confidence,category,high / disputed / inferred / unknown,yes,lets a sensitivity analysis drop disputed donors,P4 again; GSE223499's adeno-typical mutation profile is inference and must not become a label
+tissue_class,category,primary_tumour / adjacent_normal / normal_lung / LN_met / brain_met / pleural / normal_LN / effusion,yes,site,"GSE223499 organ says bone_marrow for brain metastases and 4 libraries named BM are primary tumours"
+sampling_site,category,core / middle / edge / normal / NA,no,intra-tumour gradient,"only Lambrechts carries it; fibroblast yield varies 11.5-fold between sites in one patient, so site is a real stromal confounder"
+platform,category,"10x 3' v1 / v2 / v3 / 10x 5' v1 / v2 / GEXSCOPE / BD Rhapsody / inDrop / Smart-seq2 / Chromium FLEX",yes,the confounder,"E-MTAB-13526 SDRF claims v3 for all 81 but P1 uses the 737,280-barcode v2 whitelist"
+modality,category,single_cell / single_nucleus,yes,a second confounder,GSE223499 is 42 of 42 single-nucleus and its redox detection diverges gene-specifically
+enrichment,category,whole_tissue / CD45pos / CD45pos_MDSC / MDSC / CD235a_neg / stromal_sort / T_sort,yes,composition safety,"E-MTAB-13526 is 53 immune-sorted against 28 non-immune libraries; Guo_Zhang_2018 is 99.8 pct T/NK"
+composition_safe,bool,True only for whole_tissue,yes,a hard filter every composition query must apply,sorted fractions read as tissue composition is a named project trap
+treatment,category,naive / treated / unknown,yes,stratification,GSE207422 is 14 of 15 post anti-PD-1
+block_id,category,<study>_<platform>,yes,the meta-analysis stratum,this is the column the whole contrast design runs on
+level1_compartment,category,"epithelial_malignant / T_NK / myeloid / B_plasma / fibroblast / mural / endothelial / other",yes,continuity with every existing analysis,"substring matching sends malignant cell and mast cell into T/NK because both contain the string t cell; that bug mislaid 33,234 LUSC malignant cells"
+level2_celltype,category,"the 21 ct_high labels shared by all three trio datasets, plus CD4_T / CD8_T / Treg / NK / macrophage / monocyte / DC / pDC / mast / neutrophil / myCAF / iCAF / apCAF / pericyte / SMC / AT1 / AT2 / club / ciliated / basal",yes,the working vocabulary,"there is no NK label in ct_high; NK sits inside ILC (16,038 of 19,607 ILC cells in GSE131907)"
+level3_celltype_native,str,verbatim source label,yes,nothing is lost,"Lambrechts Fibro2 is labelled fibroblast but its markers are pericyte (COX4I2 HIGD1B RGS5 NOTCH3) and Fibro3 is author-flagged low quality; 506 of 1,465 fibroblasts are one or the other"
+celltype_source,category,author / census / transferred,yes,honesty about which labels were computed,-
+celltype_confidence,float,0 to 1,no,a usable floor,"in GSE223499 the two annotation axes agree on 55.5 pct of cells; a confidence floor of 0.5 lifts that to 80.0 pct but discards 57 pct of the dataset"
+is_malignant,bool,from Stage 4,no,the new compartment,malignant status is not annotated in E-MTAB-13526 or in the Census epithelial labels
+malignancy_score,float,CNV score,no,-,-
+n_counts,int,per-cell UMI total,yes,the depth control,detection depth drives apparent effects; TXNRD1 is detected in about 12 pct of fibroblasts
+n_genes,int,-,yes,-,median depth differs 2.2-fold between two accessions of the same study
+counts_are_estimates,bool,True for E-MTAB-6653 only,yes,protects negative-binomial models,15.91 pct of E-MTAB-6653 nonzero entries are fractional Alevin EM estimates
+doublet_score,float,-,no,-,GSE223499 has 9.37 pct predicted doublets against about 5 pct in the two scRNA sets
+sex,category,male / female / unknown,no,covariate,-
+age,float,-,no,covariate,-
+stage,str,-,no,covariate,-
+smoking,str,-,no,covariate,-
